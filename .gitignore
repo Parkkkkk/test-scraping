@@ -27,4 +27,4 @@ client/yarn-error.log*
 
 /*.json
 /client/**/*.json
-
+config/
