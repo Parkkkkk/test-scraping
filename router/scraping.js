@@ -1,10 +1,10 @@
 const express = require('express');
 const cheerio = require('cheerio');
 const request = require('request');
+require('dotenv').config();
 
 
-
-const url = "http://www.dumaro.co.kr"
+const url = process.env.URL;
 const router = express.Router();
 var data = [];
 

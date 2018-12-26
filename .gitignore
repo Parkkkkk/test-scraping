@@ -5,8 +5,6 @@
 client/node_modules
 .env
 
-/config
-
 client/**/.pnp
 client/.pnp.js
 
@@ -29,3 +27,4 @@ client/yarn-error.log*
 
 /*.json
 /client/**/*.json
+
