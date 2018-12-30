@@ -1,6 +1,8 @@
 import React ,{ Component } from 'react';
 import './page.css';
 
+
+
 class Page extends Component {
     constructor() {
         super();
@@ -19,6 +21,14 @@ class Page extends Component {
     render() {
         return (
             <div className="Page">
+                <div className = "profile">
+                    <from>
+                    <input type="text"></input>
+
+                    <button type ="submit"></button>
+                    </from>
+                    
+                </div>
                 {this.state.data.map(datas => 
                 <div className = "Page_Columns">
                     <a href ={datas.item}><img src={datas.image} alt="gi" width = "150" height="200"/></a>
