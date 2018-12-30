@@ -1,17 +1,17 @@
 import React , { Component } from 'react';
 import { Auth } from Component;
 
-class Login extends Component {
-
-
-
+class Join extends Component {
+    constructor() {
+        
+    }
 
 
 
 
     render () {
         return (
-            <div className = "first div">
+            <div>
                 <Auth />
             </div>
         );

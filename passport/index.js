@@ -7,7 +7,11 @@ module.exports = (passport) => {
 
     passport.deserializeUser((id , done) => {
         User.find({
-            where:{id}
+            where:{ id },
+            include : [{
+                model : User,
+                attributes : [ 'id' , 'nick' ]
+            }]
         })
         .then(user => done(null, user))
         .then(err => done(err))

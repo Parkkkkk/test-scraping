@@ -2,8 +2,7 @@ import React ,{ Component } from 'react';
 import './page.css';
 
 
-
-class Page extends Component {
+class Item extends Component {
     constructor() {
         super();
         this.state = {
@@ -20,18 +19,10 @@ class Page extends Component {
 
     render() {
         return (
-            <div className="Page">
-                <div className = "profile">
-                    <from>
-                    <input type="text"></input>
-
-                    <button type ="submit"></button>
-                    </from>
-                    
-                </div>
+            <div className="Item">
                 {this.state.data.map(datas => 
-                <div className = "Page_Columns">
-                    <a href ={datas.item}><img src={datas.image} alt="gi" width = "150" height="200"/></a>
+                <div className = "Item_Columns">
+                    <a href ={datas.item}><img src={datas.image} alt="img" width = "150" height="200"/></a>
                 </div>
                  )}
             </div>
@@ -40,8 +31,4 @@ class Page extends Component {
 
 }
 
-
-
-
-
-export default Page;
+export default Item;
