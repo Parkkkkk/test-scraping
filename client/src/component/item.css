@@ -1,10 +1,9 @@
-.Page {
+.Item_list {
     display: grid;
     grid-template-columns: auto auto auto;
-    background-color:white;
     padding: 20px;
   }
-.Page_Columns {
+.Item_Columns {
     margin-left: auto;
     margin-right: auto;
 }

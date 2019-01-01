@@ -1,6 +1,8 @@
 import React , { Component } from 'react';
 import PropTypes from 'prop-types';
 
+//
+
 class Login extends Component {
     constructor() {
         super(...arguments);
@@ -8,6 +10,8 @@ class Login extends Component {
             requsetId : '',
             requestPw : ''
         }
+        // 메서드를 다른 메서드에서 사용할때
+        // bind를 하지않으면 this가 정확히 무엇을 가르키는지 모르게된다 
         this.ChangeId = this.ChangeId.bind();
         this.ChangePw = this.ChangePw.bind();
     }
@@ -21,7 +25,7 @@ class Login extends Component {
         this.setState({requestPw : event.target.value});
     }
 
-
+    
     onSubmit () {
         var UserInfo = {
             'userid' : this.state.requsetId,
@@ -32,7 +36,7 @@ class Login extends Component {
             headers : { 'Content-type' : 'application/json'},
             body : JSON.stringify(UserInfo) 
         })
-        .then(response => response.json)
+        .then(response => response.json())
         .then((responseData)=>{
 	    	if(responseData.nick){
 	    		this.props.onSuccess(this.state.requestID);
@@ -44,7 +48,7 @@ class Login extends Component {
         return (
             <div className="Login_column">
                 <ul>
-                    <li className = "Lgoin_title"> Parkkkkk </li>
+                    <li className = "Login_title"> Parkkkkk </li>
                     <li><input type="text" name ="requestId" placeholder ="ID" value={this.state.requestId} onChange={this.ChangeId}></input></li>
                     <li><input type="text" name ="requestPw" placeholder ="PASSWORD" value={this.state.requestPw} onChange={this.ChangePw}></input></li>
                     <li><button className="Loginbutton" onClick={this.onSubmit.bind(this)}로그인></button></li>

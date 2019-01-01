@@ -31,10 +31,6 @@ app.use(passport.session());
 app.use('/api', apiRouter);
 app.use('/auth', authRouter);
 
-app.get('/' , (req, res) => {
-    res.redirect('/');
-})
-
 
 app.listen(PORT, () => {
     console.log(`Check out the app at http://localhost:${PORT}`);

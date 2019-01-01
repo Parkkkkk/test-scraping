@@ -1,18 +1,31 @@
 import React , { Component } from 'react';
-import Login from './login' 
+import Login from './login';
+import Logout from './profile';
 
 class Loginhome extends Component {
     componentWillMount () {
         this.state = {
-            userId : ""
+            userId : "",
+            userNick : ""
         }
     };
     onLogin () {
         this.setState({
-            
+            userId : "",
+            userNick : ""
         })
     }
 
+    onLogout () {
+        fetch('/auth/logout' , {
+            method : 'GET',
+            
+        })
+        this.setState({
+            userId : "",
+            userNick : ""
+        })
+    }
 
 
 
@@ -23,3 +36,5 @@ class Loginhome extends Component {
         )
     }
 }
+
+export default Loginhome;

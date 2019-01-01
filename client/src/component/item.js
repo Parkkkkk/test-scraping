@@ -1,6 +1,7 @@
 import React ,{ Component } from 'react';
-import './page.css';
+import './item.css';
 
+// image scaping Compnent
 
 class Item extends Component {
     constructor() {
@@ -19,7 +20,7 @@ class Item extends Component {
 
     render() {
         return (
-            <div className="Item">
+            <div className="Item_list">
                 {this.state.data.map(datas => 
                 <div className = "Item_Columns">
                     <a href ={datas.item}><img src={datas.image} alt="img" width = "150" height="200"/></a>

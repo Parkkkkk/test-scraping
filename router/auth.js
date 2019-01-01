@@ -31,7 +31,7 @@ router.post('/join', async (req, res, next) => {
 
 //login User
 router.post('/login',
-    passport.authenticate('local' , { failureRedirect : '/login'})) ,(req, res) => {
+    passport.authenticate('local' , { failureRedirect : '/login'})) , async (req, res) => {
         res.redirect('/');
     }
 
@@ -44,8 +44,8 @@ router.get('/logout' , (req, res) => {
 });
 
 router.get('/profile', async (req, res) => {
-    const user = await User.find({ where : req.bod})
-    return res.send({user});
+    const user = await User.find({ where : req.user })
+    return res.json(user);
 })
 
 
