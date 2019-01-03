@@ -1,32 +1,33 @@
 const express = require('express');
 const passport = require('passport');
 const bcrypt = require('bcrypt');
-const { User } = require('../models')
+const { User } = require('../models');
 
 const router = express.Router();
 
 
 // roll in User 
-router.post('/join', async (req, res, next) => {
-    const { email, nick , password } = req.body;
-    try {
-        const exUser = await User.find({ where : email });
-        if ( exUser ) {
-            return res.redirect('/');
-        } 
-        const hash = bcrypt.hash( password, 12);
-        await User.creat({
-            email,
-            nick,
-            password : hash,
-        });
-        res.redirect('/');
-    } catch (error) {
-        console.error(error);
-        return next(error);
-    }
-})
 
+router.post('/join', async (req, res, next) => {
+    const { email, nick, password } = req.body;
+    try {
+      const exUser = await User.findOne({ where: { email } });
+      if (exUser) {
+        console.log('이미 존재하는 유저입니다');
+      }
+      const hash = await bcrypt.hash(password, 12);
+      await User.create({
+        email,
+        nick,
+        password: hash,
+      });
+      return res.send(email);
+    } catch (error) {
+      console.error(error);
+      return next(error);
+    }
+  });
+  
 
 
 //login User

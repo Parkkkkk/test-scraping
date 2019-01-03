@@ -32,7 +32,7 @@ class Profile extends Component {
                 </ul>
                 )}
                 <div className="logout_button">
-                <input type="button" className="userlogout" value="Logout"onClick={()=>{this.props.onLogout()}}></input>
+                    <input type="button" className="userlogout" value="Logout" onClick={()=>{this.props.onLogout()}}></input>
                 </div>
             </div>
         );

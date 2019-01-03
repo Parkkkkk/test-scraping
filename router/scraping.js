@@ -4,7 +4,7 @@ const request = require('request');
 require('dotenv').config();
 
 
-const url = process.env.URL;
+//const url = process.env.URL;
 const router = express.Router();
 var data = [];
 

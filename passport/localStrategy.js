@@ -1,12 +1,11 @@
 const LocalStartegy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
-
-const { User } = require('../models')
+const { User } = require('../models');
 
 module.exports = (passport) => {
     passport.use(new LocalStartegy ({
         usernameField : 'email',
-        passwordField : 'pass', 
+        passwordField : 'password', 
     }, async ( email, password, done) => {
         try {
             const exUser = await User.find({ where : { email }});

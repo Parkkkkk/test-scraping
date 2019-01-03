@@ -10,10 +10,12 @@ const apiRouter = require('./router/scraping');
 
 const app = express();
 sequelize.sync();
-
 passportConfig(passport);
 
 const PORT = process.env.PORT || 3030;
+
+app.use(express.json());
+app.use(express.urlencoded({ extended : false }));
 
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(session ({
