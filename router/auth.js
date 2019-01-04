@@ -21,21 +21,24 @@ router.post('/join', async (req, res, next) => {
         nick,
         password: hash,
       });
-      return res.send(email);
+      return res.send(email, nick);
     } catch (error) {
       console.error(error);
       return next(error);
     }
   });
   
-
-
 //login User
-router.post('/login',
-    passport.authenticate('local' , { failureRedirect : '/login'})) , async (req, res) => {
-        res.redirect('/');
-    }
-
+router.post('/login', (req, res, next) => {
+  passport.authenticate('local', ( user ) => {
+    return req.login(user, (loginError) => {
+      if (loginError) {
+        console.error(loginError);
+        return next(loginError);
+      }
+      return res.json(req.user);
+    });
+  })(req, res, next); });
 
 //logout User
 router.get('/logout' , (req, res) => {
@@ -45,7 +48,7 @@ router.get('/logout' , (req, res) => {
 });
 
 router.get('/profile', async (req, res) => {
-    const user = await User.find({ where : req.user })
+    const user = await User.findOne({ where : req.user })
     return res.json(user);
 })
 

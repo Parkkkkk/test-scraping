@@ -1,16 +1,17 @@
-import React , { Component } from 'react';
-import { Route } from 'react-router-dom';
-import { Home , Join } from '../pages';
+import React from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {Home , Join } from '../pages/index';
 
-class App extends Component {
-    render () {
-        return (
+const App = () => {
+    return (
+        <Router>
             <div>
-                <Route exact path='/' Component={Home}/>
-                <Route path='/join' Component={Join}/>
+            <Join />
+            <Home />
+            <Route path='/join' Component={Join} />
             </div>
-        )
-    }
+        </Router>
+        );
 }
 
 export default App;

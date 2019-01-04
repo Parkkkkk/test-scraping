@@ -2,7 +2,7 @@ import React ,{ Component } from 'react';
 
 class Profile extends Component {
     constructor () {
-        super(...arguments),
+        super(...arguments);
         this.state = {
             user : []
         }

@@ -6,7 +6,7 @@ class Login extends Component {
     constructor() {
         super(...arguments);
         this.state = {
-            requsetId : "",
+            requestId : "",
             requestPw : ""
         }
         // 메서드를 다른 메서드에서 사용할때
@@ -28,7 +28,7 @@ class Login extends Component {
     onSubmit () {
         var UserInfo = {
             userid : this.state.requestId,
-            userpw : this.state.requestPw
+            userpw : this.state.requestPw,
         };
         
         fetch('/auth/login' , {
@@ -36,8 +36,6 @@ class Login extends Component {
             headers : { 'Content-type' : 'application/json'},
             body : JSON.stringify(UserInfo) 
         })
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
         }
 
     
@@ -45,12 +43,13 @@ class Login extends Component {
         return (
             <div className="User_info">
                     <h2 className="Login_title"> Parkkkkk </h2>
-                    <input type="text" name ="requestId" placeholder ="EMAIL" value={this.state.requestId} onChange={this.ChangeId}></input>
-                    <input type="password" name ="requestPw" placeholder ="PASSWORD" value={this.state.requestPw} onChange={this.ChangePw}></input>
-                    <button className="Loginbutton" onClick={this.onSubmit.bind(this)}> Login </button>
-                <div>
-                    <Link to="/join">{'Singup'} </Link>
-                </div>
+                    <ul>
+                        <li><input type="text" name ="requestId" placeholder ="EMAIL" value={this.state.requestId} onChange={this.ChangeId}></input></li>
+                        <li><input type="password" name ="requestPw" placeholder ="PASSWORD" value={this.state.requestPw} onChange={this.ChangePw}></input></li>
+                        <li><button className="Loginbutton" onClick={this.onSubmit.bind(this)}> Login </button>
+                            <button><Link to="/join">Singup</Link></button></li>
+                    </ul>
+               
             </div>
         );
     }

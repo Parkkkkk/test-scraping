@@ -1,17 +1,12 @@
-import React , { Component }from 'react';
-import { Item , Login , Profile} from '../component';
+import React from 'react';
+import { Login } from '../component';
 
-class Home extends Component {
 
-    render(){
-        return (
-            <div>
-                <Item />
-                
-                <Login/>
-            </div>
-        )
-    }
-}
+const Home = () => (
+        <div>
+            <Login />
+        </div>
+);
+
 
 export default Home;
