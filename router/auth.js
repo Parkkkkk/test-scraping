@@ -29,14 +29,14 @@ router.post('/join', async (req, res, next) => {
   });
   
 //login User
-router.post('/login', (req, res, next) => {
+router.post('/login', (req, res, next) => { 
   passport.authenticate('local', ( user ) => {
     return req.login(user, (loginError) => {
       if (loginError) {
         console.error(loginError);
-        return next(loginError);
+        return res.send(loginError);
       }
-      return res.json(req.user);
+      return res.json(user);
     });
   })(req, res, next); });
 

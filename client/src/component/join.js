@@ -41,8 +41,12 @@ class Join extends Component {
             headers : { 'Content-type' : 'application/json'},
             body : JSON.stringify(join_info)
             })
-            .then(res => console.log(res))
-            .catch(err => console.log(err))    
+            .then(res => {
+                if(res) {
+                    this.props.history.push(`/`);
+                }
+            })
+                
     }
 
 

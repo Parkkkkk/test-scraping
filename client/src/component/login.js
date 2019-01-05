@@ -1,6 +1,5 @@
 import React , { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 class Login extends Component {
     constructor() {
@@ -36,6 +35,11 @@ class Login extends Component {
             headers : { 'Content-type' : 'application/json'},
             body : JSON.stringify(UserInfo) 
         })
+        .then(res => {
+            if (res) {
+                this.props.history.push(`/`);
+            }
+        })
         }
 
     
@@ -46,8 +50,7 @@ class Login extends Component {
                     <ul>
                         <li><input type="text" name ="requestId" placeholder ="EMAIL" value={this.state.requestId} onChange={this.ChangeId}></input></li>
                         <li><input type="password" name ="requestPw" placeholder ="PASSWORD" value={this.state.requestPw} onChange={this.ChangePw}></input></li>
-                        <li><button className="Loginbutton" onClick={this.onSubmit.bind(this)}> Login </button>
-                            <button><Link to="/join">Singup</Link></button></li>
+                        <li><button className="Loginbutton" onClick={this.onSubmit.bind(this)}> Login </button></li>
                     </ul>
                
             </div>

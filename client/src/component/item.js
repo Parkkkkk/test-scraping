@@ -1,5 +1,5 @@
-import React ,{ Component } from 'react';
-import './item.css';
+import React ,{ Component } from 'react'
+import './item.css'
 
 // image scaping Compnent
 
