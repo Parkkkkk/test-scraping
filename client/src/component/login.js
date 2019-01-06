@@ -1,9 +1,10 @@
-import React , { Component } from 'react';
-import PropTypes from 'prop-types';
+import React , { Component } from 'react'
+import PropTypes from 'prop-types'
+import { Login_user} from './function'
 
 class Login extends Component {
     constructor() {
-        super(...arguments);
+        super();
         this.state = {
             requestId : "",
             requestPw : ""
@@ -24,20 +25,18 @@ class Login extends Component {
     }
 
     
-    onSubmit () {
+    onSubmit (event) {
+        event.preventDefault();
+
         var UserInfo = {
             userid : this.state.requestId,
             userpw : this.state.requestPw,
         };
         
-        fetch('/auth/login' , {
-            method : 'POST',
-            headers : { 'Content-type' : 'application/json'},
-            body : JSON.stringify(UserInfo) 
-        })
+        Login_user (UserInfo)
         .then(res => {
-            if (res) {
-                this.props.history.push(`/`);
+            if(res) {
+                console.log(res)
             }
         })
         }
@@ -58,7 +57,7 @@ class Login extends Component {
     }
 }
 Login.PropTypes = {
-    onSuccess : PropTypes.function
+    OnSuccess : PropTypes.function
 }
 
 export default Login;

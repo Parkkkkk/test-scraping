@@ -1,22 +1,16 @@
 import React ,{ Component } from 'react';
+import {Logout_user, user_profile} from './function'
 
 class Profile extends Component {
     constructor () {
-        super(...arguments);
+        super();
         this.state = {
             user : []
         }
     }
 
     componentDidMount () {
-        fetch('/auth/profile' ,{
-            method : 'GET',
-            type : 'json',
-            headers : {
-                'Accept' : 'application/json',
-                'Content-type' : 'application/json'}
-        })
-        .then(res => res.json())
+        user_profile()
         .then(user => this.setState({ user }))
     }
 
@@ -32,7 +26,7 @@ class Profile extends Component {
                 </ul>
                 )}
                 <div className="logout_button">
-                    <input type="button" className="userlogout" value="Logout" onClick={()=>{this.props.onLogout()}}></input>
+                    <input type="button" className="userlogout" value="Logout" onClick={()=>{Logout_user()}}></input>
                 </div>
             </div>
         );

@@ -13,7 +13,7 @@ router.post('/join', async (req, res, next) => {
     try {
       const exUser = await User.findOne({ where: { email } });
       if (exUser) {
-        console.log('이미 존재하는 유저입니다');
+        return console.log('이미 존재하는 유저입니다');
       }
       const hash = await bcrypt.hash(password, 12);
       await User.create({
@@ -29,22 +29,28 @@ router.post('/join', async (req, res, next) => {
   });
   
 //login User
-router.post('/login', (req, res, next) => { 
-  passport.authenticate('local', ( user ) => {
-    return req.login(user, (loginError) => {
-      if (loginError) {
-        console.error(loginError);
-        return res.send(loginError);
+router.post('/login', function(req, res, next) {
+  passport.authenticate('local', function(err, user, info) {
+    if (err) { 
+      return next(err); 
+    }
+    if (!user) { 
+      return res.send('false'); 
+    }
+    req.logIn(user, function(err) {
+      if (err) { 
+        return next(err); 
       }
-      return res.json(user);
+      return res.send('true');
     });
-  })(req, res, next); });
+  })(req, res, next);
+});
 
 //logout User
 router.get('/logout' , (req, res) => {
     req.logout();
     req.session.destroy();
-    res.redirect('/');
+    res.send('success');
 });
 
 router.get('/profile', async (req, res) => {

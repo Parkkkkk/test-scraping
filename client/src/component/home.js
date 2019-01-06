@@ -1,12 +1,17 @@
 import React , { Component } from 'react'
-import Item from './item';
+import { Login , Profile }from './index';
+
 
 class Home extends Component {
+
+    state = {
+        userId : 'dk@dk.dk'
+    }
 
     render() {
         return (
             <div>
-                <Item />
+                {this.state.userId ? <Profile /> : <Login />}
             </div>
         )
     }

@@ -11,7 +11,7 @@ module.exports = (passport) => {
             where:{ id },
             include : [{
                 model : User,
-                attributes : [ 'id' , 'nick' ]
+                attributes : [ 'email' , 'nick' ]
             }]
         })
         .then(user => done(null, user))

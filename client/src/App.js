@@ -1,22 +1,30 @@
-import React , { Component }from 'react'
-import {BrowserRouter as Router, Route} from 'react-router-dom'
-import { Home , Join , Login } from '../src/component'
-
-class App extends Component {
+import React from 'react'
+import {BrowserRouter as Router, Route , Link} from 'react-router-dom'
+import { Home , Join} from '../src/component'
 
 
-    render () {
-    return (
-        <Router>
-            <div className ="container" >
-            <Route path="/" Component={Home}/>
-            <Login />
-            <Route path="/join" Component={Join}/>
-            </div>
-        </Router>
-        );
-    }
+const App = () => {
+ return (
+    <Router>
+        <div className ="container" >
+        <Link to ="/join"> join </Link>
+        <Route path="/" Component={Home}/>
+        <Route path="/join" Component={Join}/>
+        </div>
+    </Router>
+ )
 }
+
+/*
+
+<Route exact path="/" render={() => (
+  loggedIn ? (
+    <Redirect to="/dashboard"/>
+  ) : (
+    <PublicHomePage/>
+  )
+)}/>
+*/
 
 
 export default App;
