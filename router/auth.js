@@ -21,10 +21,9 @@ router.post('/join', async (req, res, next) => {
         nick,
         password: hash,
       });
-      return res.send(email, nick);
+      return res.json({status : user.email});
     } catch (error) {
-      console.error(error);
-      return next(error);
+      return res.send(error);
     }
   });
   
@@ -32,7 +31,7 @@ router.post('/join', async (req, res, next) => {
 router.post('/login', function(req, res, next) {
   passport.authenticate('local', function(err, user, info) {
     if (err) { 
-      return next(err); 
+      return res.send(err); 
     }
     if (!user) { 
       return res.send('false'); 
@@ -41,7 +40,7 @@ router.post('/login', function(req, res, next) {
       if (err) { 
         return next(err); 
       }
-      return res.send('true');
+      return res.json({ email : user.email , nick : user.nick});
     });
   })(req, res, next);
 });
@@ -52,11 +51,6 @@ router.get('/logout' , (req, res) => {
     req.session.destroy();
     res.send('success');
 });
-
-router.get('/profile', async (req, res) => {
-    const user = await User.findOne({ where : req.user })
-    return res.json(user);
-})
 
 
 module.exports = router;

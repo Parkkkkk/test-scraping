@@ -1,35 +1,34 @@
 import React , { Component } from 'react';
-import PropTypes from 'prop-types';
 import { register } from './function';
 
 class Join extends Component {
     constructor() {
-        super(...arguments);
+        super();
         this.state = {
             email : '',
             password : '',
             nick : ''
         }
-        this.ChangeEmail = this.ChangeEmail.bind(this);
-        this.ChangePassword = this.ChangePassword.bind(this);
+        this.ChangeId = this.ChangeId.bind(this);
+        this.ChangePW = this.ChangePW.bind(this);
         this.ChangeNick = this.ChangeNick.bind(this);
     }
 
 
-    ChangeEmail(event) {
-        this.setState({ email : event.target.value});
+    ChangeId(e) {
+        this.setState({ email : e.target.value});
     }
 
-    ChangePassword (event) {
-        this.setState({ password : event.target.value});
+    ChangePw (e) {
+        this.setState({ password : e.target.value});
     }
 
-    ChangeNick (event) {
-        this.setState({ nick : event.target.value});
+    ChangeNick (e) {
+        this.setState({ nick : e.target.value});
     }
 
-    Onsubmit_join (event) {
-        event.preventDefault()
+    Onsubmit_join (e) {
+        e.preventDefault()
 
         var join_info = {
             email : this.state.email,
@@ -39,33 +38,52 @@ class Join extends Component {
 
         register (join_info)
             .then(res => {
-                if(res) {
-                    this.props.history.push('/');
-                }
+                    this.props.history.push('/login');
             })
                 
     }
 
 
+    
     render () {
         return (
-            <div className ="Join_form">
-                <ul>
-                    <li className="Join_title">Join Form</li>
-                    <li><input type="text" name ="email" placeholder="ID" value={this.state.email} onChange={this.ChangeEmail}></input></li>
-                    <li><input type="password" name = "password" placeholder="PASSWORD" value={this.state.password} onChange={this.ChangePassword} ></input></li>
-                    <li><input type="text" name = "nick" placeholder ="Nick name" value={this.state.nick} onChange={this.ChangeNick} ></input></li> 
-                    <li><button className="Joinbutton" onClick={this.Onsubmit_join.bind(this)}> 회원가입 </button></li>   
-                </ul>
+            <div className="User_info">
+                <form noValidate onSubmit={this.Onsubmit_join}>
+                    <h2 className="Join_title"> Parkkkkk </h2>
+                        <div className="form-group">
+                            <label htmlFor="email">Email</label>
+                            <input type="email" 
+                            name ="email" 
+                            placeholder ="EMAIL" 
+                            value={this.state.email} 
+                            onChange={this.ChangeId}></input>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="password">Passwrod</label>
+                            <input type="password" 
+                            name ="password" 
+                            placeholder ="PASSWORD" 
+                            value={this.state.password} 
+                            onChange={this.ChangePw}></input>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="nick">Nick</label>
+                            <input type="text" 
+                            name ="nick" 
+                            placeholder ="Nick name" 
+                            value={this.state.nick} 
+                            onChange={this.ChangeId}></input>
+                        </div>
+                        <button type="submit" 
+                        className="Joinbutton" >
+                             Join 
+                        </button>
+                </form>
             </div>
         );
     }
 }
 
-Join.PropTypes = {
-    email : PropTypes.string.isRequired,
-    password : PropTypes.string.isRequired,
-    nick : PropTypes.string.isRequired
-}
+
 
 export default Join;

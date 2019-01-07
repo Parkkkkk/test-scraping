@@ -1,30 +1,25 @@
-import React from 'react'
-import {BrowserRouter as Router, Route , Link} from 'react-router-dom'
-import { Home , Join} from '../src/component'
+import React, { Component } from 'react'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
+import {  Join , Login , Profile} from '../src/component'
+import Home from '../src/component/home';
 
+class App extends Component {
+    render() {
+        return (
+            <Router>
+                <div className="App">
+                    <Route exact path="/" compoenet={Home} />
+                    <div className="container">
+                        <Route exact path="/join" compoenet={Join} />
+                        <Route exact path="/login" compoenet={Login} />
+                        <Route exact path="/profile" compoenet={Profile} />
+                    </div> 
+                </div>
+            </Router>
 
-const App = () => {
- return (
-    <Router>
-        <div className ="container" >
-        <Link to ="/join"> join </Link>
-        <Route path="/" Component={Home}/>
-        <Route path="/join" Component={Join}/>
-        </div>
-    </Router>
- )
+        )
+    }
 }
-
-/*
-
-<Route exact path="/" render={() => (
-  loggedIn ? (
-    <Redirect to="/dashboard"/>
-  ) : (
-    <PublicHomePage/>
-  )
-)}/>
-*/
 
 
 export default App;

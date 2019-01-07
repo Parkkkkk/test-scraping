@@ -1,6 +1,5 @@
 import React , { Component } from 'react'
-import PropTypes from 'prop-types'
-import { Login_user} from './function'
+import { Login_user } from './function'
 
 class Login extends Component {
     constructor() {
@@ -16,48 +15,51 @@ class Login extends Component {
     }
 
 
-    ChangeId (event) {
-        this.setState({requestId : event.target.value});
+    ChangeId (e) {
+        this.setState({requestId : e.target.value});
     }
 
-    ChangePw (event) {
-        this.setState({requestPw : event.target.value});
+    ChangePw (e) {
+        this.setState({requestPw : e.target.value});
     }
 
     
-    onSubmit (event) {
-        event.preventDefault();
+    onSubmit (e) {
+        e.preventDefault();
 
-        var UserInfo = {
-            userid : this.state.requestId,
-            userpw : this.state.requestPw,
+        const UserInfo = {
+            requestId : this.state.requestId,
+            requestPw : this.state.requestPw,
         };
         
         Login_user (UserInfo)
         .then(res => {
-            if(res) {
-                console.log(res)
-            }
-        })
+            if(res){
+            this.props.history.push('/profile')
+        }})
         }
 
     
     render () {
         return (
             <div className="User_info">
+                <form noValidate onSubmit={this.onSubmit}>
                     <h2 className="Login_title"> Parkkkkk </h2>
-                    <ul>
-                        <li><input type="text" name ="requestId" placeholder ="EMAIL" value={this.state.requestId} onChange={this.ChangeId}></input></li>
-                        <li><input type="password" name ="requestPw" placeholder ="PASSWORD" value={this.state.requestPw} onChange={this.ChangePw}></input></li>
-                        <li><button className="Loginbutton" onClick={this.onSubmit.bind(this)}> Login </button></li>
-                    </ul>
-               
+                        <div className="form-group">
+                            <label htmlFor="email">Email</label>
+                            <input type="email" name ="requestId" placeholder ="EMAIL" value={this.state.requestId} onChange={this.ChangeId}></input>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="password">Passwrod</label>
+                            <input type="password" name ="requestPw" placeholder ="PASSWORD" value={this.state.requestPw} onChange={this.ChangePw}></input>
+                        </div>
+                        <button type="submit" 
+                        className="Loginbutton" >
+                             Login 
+                        </button>
+                </form>
             </div>
         );
     }
 }
-Login.PropTypes = {
-    OnSuccess : PropTypes.function
-}
-
-export default Login;
+export default Login

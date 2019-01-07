@@ -18,6 +18,11 @@ export const Login_user = user => {
         headers : {'Content-Type' : 'application/json'},
         data : JSON.stringify(user)
         })
+        .then(res => {
+            localStorage.setItem({ email : res.data.email,
+                                   nick : res.data.nick })
+            return res.data
+        })
        )
 } 
 

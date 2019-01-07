@@ -6,7 +6,6 @@ module.exports = (passport) => {
     passport.use(new LocalStartegy ({
         usernameField : 'email',
         passwordField : 'password', 
-        session : 'false'
     }, async ( email, password, done) => {
         try {
             const exUser = await User.findOne({ where : { email }});

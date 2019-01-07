@@ -1,34 +1,45 @@
 import React ,{ Component } from 'react';
-import {Logout_user, user_profile} from './function'
 
 class Profile extends Component {
     constructor () {
         super();
         this.state = {
-            user : []
+            email : '',
+            nick : ''
         }
     }
 
     componentDidMount () {
-        user_profile()
-        .then(user => this.setState({ user }))
+        const email = localStorage.email
+        const nick = localStorage.nick
+        this.setState({
+            email : email,
+            nick : nick
+        })
     }
 
 
 
     render() {
         return (
-            <div className ="User_profile">
-                {this.state.user.map(users => 
-                <ul>
-                    <li>{users.email}</li>
-                    <li>{users.nick} 님 안녕하세요!</li>
-                </ul>
-                )}
-                <div className="logout_button">
-                    <input type="button" className="userlogout" value="Logout" onClick={()=>{Logout_user()}}></input>
-                </div>
+            <div className ="constainer">
+            <div clasName="profile_title">
+                <h1 className="text-center">PROFILE</h1>
             </div>
+            <table className="table">
+                <tbody>
+                    <tr>
+                        <td>Email</td>
+                        <td>{this.state.email}</td>
+                    </tr>
+                    <tr>
+                        <td>Nick name</td>
+                        <td>{this.state.nick}</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+
         );
     }
 }
