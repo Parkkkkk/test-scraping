@@ -29,10 +29,7 @@ class Login extends Component {
         };
         
         Login_user (UserInfo)
-        .then(res => {
-            if(res){
-            this.props.history.push('/')
-        }})
+        .then(res => {this.props.history.push('/')})
         }
 
     

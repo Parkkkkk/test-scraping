@@ -28,9 +28,7 @@ class Join extends Component {
         }
 
         register (join_info)
-            .then(res => {
-                    this.props.history.push('/login');
-            })
+            .then(res => {this.props.history.push('/login');})
                 
     }
 

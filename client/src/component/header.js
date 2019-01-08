@@ -1,5 +1,5 @@
 import React , { Component } from 'react'
-import { Link , withRouter } from 'react-router-dom'
+import { NavLink , withRouter } from 'react-router-dom'
 import './header.css'
 
 class Header extends Component {
@@ -13,16 +13,16 @@ class Header extends Component {
     render () {
         const  Notlogin= (
             <div className="header">
-                <Link to ="/" className="item">Home</Link>
-                <Link to ="/login" className="item">Login</Link>
-                <Link to="/join" className="item">Join</Link>     
+                <NavLink exact to ="/" className="item" activeClassName="active">Home</NavLink>
+                <NavLink to ="/login" className="item" activeClassName="active">Login</NavLink>
+                <NavLink to="/join" className="item" activeClassName="active">Join</NavLink>     
             </div>
         )
         const login = (
             <div className="header">
-                <Link to ="/" className="item">Home</Link>
-                <Link to ="/profile" className="item">My</Link>
-                <button className="item" onClick={this.logOut.bind(this)}>Logout</button>
+                <NavLink exact to ="/" className="item" activeClassName="active">Home</NavLink>
+                <NavLink to ="/profile" className="item" activeClassName="active">My</NavLink>
+                <NavLink to ="/" className="item" activeClassName="active" onClick={this.logOut.bind(this)}>Logout</NavLink>
             </div>
         )
 

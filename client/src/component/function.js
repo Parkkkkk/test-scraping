@@ -28,11 +28,7 @@ export const Login_user = user => {
 
 export const Logout_user = () => {
     return (axios.get('auth/logout')
-    .then(res => {
-        if(res) {
-            this.props.history.push('/')
-        }
-    })
+    .then(res => console.log(res))
 )}
 
 
