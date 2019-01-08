@@ -31,7 +31,7 @@ class Login extends Component {
         Login_user (UserInfo)
         .then(res => {
             if(res){
-            this.props.history.push('/profile')
+            this.props.history.push('/')
         }})
         }
 

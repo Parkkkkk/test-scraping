@@ -1,4 +1,5 @@
 import React ,{ Component } from 'react'
+import { Getitem } from './function';
 import './item.css'
 
 // image scaping Compnent
@@ -12,8 +13,7 @@ class Item extends Component {
     }
 
     componentDidMount () {
-        fetch('/api/scraping')
-            .then(res => res.json())
+        Getitem()
             .then(data => this.setState({ data }, () => console.log('fetchd...', data)));
 
     }
