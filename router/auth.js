@@ -28,22 +28,13 @@ router.post('/join', async (req, res, next) => {
   });
   
 //login User
-router.post('/login', function(req, res, next) {
-  passport.authenticate('local', function(err, user, info) {
-    if (err) { 
-      return res.send(err); 
+router.post('/login', passport.authenticate('local'), (req, res) => {
+    const user_info = {
+      email : req.user.email,
+      nick : req.user.nick
     }
-    if (!user) { 
-      return res.send('false'); 
-    }
-    req.logIn(user, function(err) {
-      if (err) { 
-        return next(err); 
-      }
-      return res.json({ email : user.email , nick : user.nick});
-    });
-  })(req, res, next);
-});
+    return res.json(user_info);
+  });
 
 //logout User
 router.get('/logout' , (req, res) => {

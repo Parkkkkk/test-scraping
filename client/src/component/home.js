@@ -12,12 +12,12 @@ class Home extends Component {
         const loginLink = (
             <ul>
             <li>
-                <Link to ="/login" className = "nav-link">
+                <Link to ="/login">
                     Login
                 </Link>
             </li>
             <li>
-                <Link to="/join" className = "nav-link">
+                <Link to="/join">
                     Join
                 </Link>
             </li>
@@ -27,12 +27,12 @@ class Home extends Component {
         const userLink = (
             <ul>
             <li>
-                <Link to ="/profile" className = "nav-link">
+                <Link to ="/profile">
                     User
                 </Link>
             </li>
             <li>
-                <button onClick={this.logOut.bind(this)} className="nav-link">
+                <button onClick={this.logOut.bind(this)}>
                     Logout
                 </button>
             </li>
@@ -42,7 +42,7 @@ class Home extends Component {
 
         return (
             <div>
-                {localStorage.user_info ? userLink : loginLink}
+                {localStorage.email ? userLink : loginLink}
             </div>
         )
     }

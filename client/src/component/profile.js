@@ -33,7 +33,7 @@ class Profile extends Component {
                         <td>{this.state.email}</td>
                     </tr>
                     <tr>
-                        <td>Nick name</td>
+                        <td>Nick</td>
                         <td>{this.state.nick}</td>
                     </tr>
                 </tbody>

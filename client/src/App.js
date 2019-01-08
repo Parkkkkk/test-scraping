@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
-import {BrowserRouter as Router, Route} from 'react-router-dom'
-import {  Join , Login , Profile} from '../src/component'
+import {BrowserRouter as Router , Route} from 'react-router-dom'
 import Home from '../src/component/home';
+import Join from '../src/component/join';
+import Login from '../src/component/login';
+import Profile from '../src/component/profile';
+
+
+
 
 class App extends Component {
     render() {

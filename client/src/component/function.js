@@ -19,12 +19,12 @@ export const Login_user = user => {
         data : JSON.stringify(user)
         })
         .then(res => {
-            localStorage.setItem({ email : res.data.email,
-                                   nick : res.data.nick })
-            return res.data
+            localStorage.setItem('email', res.data.email)
+            localStorage.setItem('nick', res.data.nick)
         })
-       )
-} 
+        
+    )}
+
 
 export const Logout_user = () => {
     return (axios.get('auth/logout')

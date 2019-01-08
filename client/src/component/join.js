@@ -9,26 +9,17 @@ class Join extends Component {
             password : '',
             nick : ''
         }
-        this.ChangeId = this.ChangeId.bind(this);
-        this.ChangePW = this.ChangePW.bind(this);
-        this.ChangeNick = this.ChangeNick.bind(this);
+        this.Change = this.Change.bind(this);
+        this.Onsubmit_join = this.Onsubmit_join.bind(this);
     }
 
 
-    ChangeId(e) {
-        this.setState({ email : e.target.value});
+    Change (e) {
+        this.setState({[e.target.name] : e.target.value})
     }
-
-    ChangePw (e) {
-        this.setState({ password : e.target.value});
-    }
-
-    ChangeNick (e) {
-        this.setState({ nick : e.target.value});
-    }
-
-    Onsubmit_join (e) {
-        e.preventDefault()
+   
+    Onsubmit_join (event) {
+        event.preventDefault()
 
         var join_info = {
             email : this.state.email,
@@ -56,7 +47,7 @@ class Join extends Component {
                             name ="email" 
                             placeholder ="EMAIL" 
                             value={this.state.email} 
-                            onChange={this.ChangeId}></input>
+                            onChange={this.Change}></input>
                         </div>
                         <div className="form-group">
                             <label htmlFor="password">Passwrod</label>
@@ -64,7 +55,7 @@ class Join extends Component {
                             name ="password" 
                             placeholder ="PASSWORD" 
                             value={this.state.password} 
-                            onChange={this.ChangePw}></input>
+                            onChange={this.Change}></input>
                         </div>
                         <div className="form-group">
                             <label htmlFor="nick">Nick</label>
@@ -72,7 +63,7 @@ class Join extends Component {
                             name ="nick" 
                             placeholder ="Nick name" 
                             value={this.state.nick} 
-                            onChange={this.ChangeId}></input>
+                            onChange={this.Change}></input>
                         </div>
                         <button type="submit" 
                         className="Joinbutton" >
