@@ -1,5 +1,6 @@
 import React , { Component } from 'react';
 import { register } from './function';
+import './form.css';
 
 class Join extends Component {
     constructor() {
@@ -32,41 +33,47 @@ class Join extends Component {
                 
     }
 
-
-    
     render () {
         return (
-            <div className="User_info">
-                <form noValidate onSubmit={this.Onsubmit_join}>
-                    <h2 className="Join_title"> Parkkkkk </h2>
-                        <div className="form-group">
-                            <label htmlFor="email">Email</label>
-                            <input type="email" 
+            <div className="User_singup">
+                <form className="form-sign" noValidate onSubmit={this.Onsubmit_join}>
+                    <div className="text-center mb-4">
+                        <h2 className="h3 mb-3 font-weight-normal"> Parkkkkk </h2>
+                    </div>
+
+                    <div className="form-label-group">
+                            <input
+                            className="form-control" 
+                            type="email" 
                             name ="email" 
                             placeholder ="EMAIL" 
                             value={this.state.email} 
                             onChange={this.Change}></input>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="password">Passwrod</label>
-                            <input type="password" 
+                            <label htmlFor="email">Email</label>
+                    </div>
+                    <div className="form-label-group">
+                            <input 
+                            className="form-control"
+                            type="password" 
                             name ="password" 
                             placeholder ="PASSWORD" 
                             value={this.state.password} 
                             onChange={this.Change}></input>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="nick">Nick</label>
-                            <input type="text" 
+                            <label htmlFor="password">Passwrod</label>
+                    </div>
+                    <div className="form-label-group">
+                            <input
+                            className="form-control" 
+                            type="text" 
                             name ="nick" 
                             placeholder ="Nick name" 
                             value={this.state.nick} 
                             onChange={this.Change}></input>
-                        </div>
-                        <button type="submit" 
-                        className="Joinbutton" >
-                             Join 
-                        </button>
+                            <label htmlFor="nick">Nick</label>
+                    </div>
+                    <button className="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+                    <p className="mt-5 mb-3 text-muted text-center">&copy; 2017-2018</p>
+  
                 </form>
             </div>
         );

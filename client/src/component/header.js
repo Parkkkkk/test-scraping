@@ -22,12 +22,12 @@ class Header extends Component {
             <div className="header">
                 <NavLink exact to ="/" className="item" activeClassName="active">Home</NavLink>
                 <NavLink to ="/profile" className="item" activeClassName="active">My</NavLink>
-                <NavLink to ="/" className="item" activeClassName="active" onClick={this.logOut.bind(this)}>Logout</NavLink>
+                <NavLink to ="/?" className="item" activeClassName="active" onClick={this.logOut.bind(this)}>Logout</NavLink>
             </div>
         )
 
         return (
-            <div className="container">
+            <div className="nav_container">
                 {localStorage.email ? login : Notlogin}
             </div>
         )

@@ -23,7 +23,7 @@ class Profile extends Component {
     render() {
         return (
             <div className ="constainer">
-            <div clasName="profile_title">
+            <div className="profile_title">
                 <h1 className="text-center">PROFILE</h1>
             </div>
             <table className="table">
