@@ -14,8 +14,7 @@ class Item extends Component {
 
     componentDidMount () {
         Getitem()
-            .then(data => this.setState({ data }, () => console.log('fetchd...', data)));
-
+            .then(res => this.setState( { data : res.data } ))
     }
 
     render() {

@@ -35,14 +35,6 @@ export const Logout_user = () => {
 
 export const Getitem = () => {
     return (axios.get('api/scraping')
-    .then(res => res.json())
-)
-}
-
-
-
-export const user_profile = () => {
-    return (axios.get('/auth/profile')
-    .then(res => console.log(res))
     )
 }
+
