@@ -28,19 +28,30 @@ router.post('/join', async (req, res, next) => {
   });
   
 //login User
-router.post('/login', passport.authenticate('local'), (req, res) => {
-    const user_info = {
-      email : req.user.email,
-      nick : req.user.nick
+
+router.post('/login', (req, res, next) => {
+  passport.authenticate('local', (authError, user, info) => {
+    if (authError) {
+      return res.send(authError);
     }
-    return res.json(user_info);
-  });
+    if (!user) {
+      return res.send(info.message);
+    }
+      var user_info = {
+        email : req.user.email,
+        nick : req.user.nick
+      }
+      console.log(user_info);
+      return res.json(user_info);
+    
+  })(req, res, next)}); 
+
 
 //logout User
 router.get('/logout' , (req, res) => {
     req.logout();
     req.session.destroy();
-    res.send('success');
+    return res.send('success');
 });
 
 

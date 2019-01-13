@@ -28,13 +28,10 @@ export const Login_user = user => {
 
 export const Logout_user = () => {
     return (axios.get('auth/logout')
-    .then(res => console.log(res))
-)}
+    .then(res => console.log(res)))}
 
 
 
 export const Getitem = () => {
-    return (axios.get('api/scraping')
-    )
-}
+    return (axios.get('api/scraping'))}
 

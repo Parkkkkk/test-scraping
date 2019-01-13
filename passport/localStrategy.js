@@ -12,16 +12,16 @@ module.exports = (passport) => {
             if ( exUser ) {
                 const result = await bcrypt.compare(password , exUser.password);
                 if ( result ) {
-                    done (null, exUser);
+                    return done (null, exUser);
                 } else {
-                    done (null, false, { message : '비밀번호가 일치하지 않습니다'});
+                    return done (null, false, { message : '비밀번호가 일치하지 않습니다'});
                 }
             } else {
-                done(null, false, { message : '가입되지 않은 회원입니다'});
+                return done(null, false, { message : '가입되지 않은 회원입니다'});
             }
         } catch (error) {
             console.log(error);
-            done(error);
+            return done(error);
         }
     }));
 }

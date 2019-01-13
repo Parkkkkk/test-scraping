@@ -1,14 +1,17 @@
 import React , { Component } from 'react'
 import { NavLink , withRouter } from 'react-router-dom'
 import './header.css'
+import { Logout_user } from './function'
 
 class Header extends Component {
     logOut(e) {
         e.preventDefault()
         localStorage.removeItem('email')
         localStorage.removeItem('nick')
-        this.props.history.push('/')
-    }
+        Logout_user()
+        .then(res => 
+             this.props.history.push('/'))
+            }
 
     render () {
         const  Notlogin= (

@@ -6,16 +6,13 @@ module.exports = (passport) => {
         done(null, user.id);
     });
 
-    passport.deserializeUser((id , done) => {
-        User.findOne({
-            where:{ id },
-            include : [{
-                model : User,
-                attributes : [ 'email' , 'nick' ]
-            }]
-        })
-        .then(user => done(null, user))
-        .then(err => done(err))
-    });
+
+
+    passport.deserializeUser((id, done) =>  {
+        User.findByPk(id, (err, user) => {
+          done(err, user);
+        });
+      }); 
+
     local(passport);
 };

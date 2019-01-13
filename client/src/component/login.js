@@ -37,7 +37,7 @@ class Login extends Component {
     render () {
         return (
             <div className="User_info">
-                <form className="form-sign" noValidate onSubmit={this.onSubmit}>
+                <form className="form-sign" onSubmit={this.onSubmit}>
                     <div className="text-center mb-4">
                     <h2 className="h3 mb-3 font-weight-normal"> Parkkkkk </h2>
                     </div>

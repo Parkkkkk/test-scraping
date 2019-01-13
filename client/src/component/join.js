@@ -36,7 +36,7 @@ class Join extends Component {
     render () {
         return (
             <div className="User_singup">
-                <form className="form-sign" noValidate onSubmit={this.Onsubmit_join}>
+                <form className="form-sign" onSubmit={this.Onsubmit_join}>
                     <div className="text-center mb-4">
                         <h2 className="h3 mb-3 font-weight-normal"> Parkkkkk </h2>
                     </div>
