@@ -35,13 +35,15 @@ router.post('/login', (req, res, next) => {
       return res.send(authError);
     }
     if (!user) {
-      return res.send(info.message);
+      return res.json({
+        code: 400,
+        message : info.message,
+    })
     }
       var user_info = {
         email : user.email,
         nick : user.nick
       }
-      console.log(user_info);
       return res.json(user_info);
     
   })(req, res, next)}); 
@@ -51,7 +53,7 @@ router.post('/login', (req, res, next) => {
 router.get('/logout' , (req, res) => {
     req.logout();
     req.session.destroy();
-    return res.send('success');
+    return res.send('로그아웃 되었습니다.');
 });
 
 
