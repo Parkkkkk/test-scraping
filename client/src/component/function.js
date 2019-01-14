@@ -8,7 +8,7 @@ export const register = newUser => {
         data : JSON.stringify(newUser)
         })
         .then(res => {
-            console.log(res)
+            alert(res.data)
         }))
 }
 

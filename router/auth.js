@@ -13,7 +13,7 @@ router.post('/join', async (req, res, next) => {
     try {
       const exUser = await User.findOne({ where: { email } });
       if (exUser) {
-        return console.log('이미 존재하는 유저입니다');
+        return res.send('이미 존재하는 유저입니다');
       }
       const hash = await bcrypt.hash(password, 12);
       await User.create({
