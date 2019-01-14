@@ -19,12 +19,8 @@ export const Login_user = user => {
         data : JSON.stringify(user)
         })
         .then(res => {
-            if(res.data.code === 400){
-            alert(res.data.message)
-        } else {
             localStorage.setItem('email', res.data.email)
             localStorage.setItem('nick', res.data.nick)
-        }     
         })
         
     )}
@@ -32,7 +28,7 @@ export const Login_user = user => {
 
 export const Logout_user = () => {
     return (axios.get('auth/logout')
-    .then(res => alert(res.data)))}
+    .then(res => console.log(res)))}
 
 
 
