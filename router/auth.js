@@ -38,8 +38,8 @@ router.post('/login', (req, res, next) => {
       return res.send(info.message);
     }
       var user_info = {
-        email : req.user.email,
-        nick : req.user.nick
+        email : user.email,
+        nick : user.nick
       }
       console.log(user_info);
       return res.json(user_info);
