@@ -1,13 +1,10 @@
 import React ,{ Component } from 'react';
 
 class Profile extends Component {
-    constructor () {
-        super();
-        this.state = {
+        state = {
             email : '',
             nick : ''
         }
-    }
 
     componentDidMount () {
         const email = localStorage.email
@@ -17,8 +14,6 @@ class Profile extends Component {
             nick : nick
         })
     }
-
-
 
     render() {
         return (

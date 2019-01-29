@@ -35,7 +35,6 @@ router.get('/scraping' , (req, res, next) => {
                      image : image
                  };
                 })
-            console.log(data);
             res.json(data);
         } else {
             console.log('fail');

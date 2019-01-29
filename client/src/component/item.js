@@ -14,7 +14,7 @@ class Item extends Component {
 
     componentDidMount () {
         Getitem()
-            .then(res => this.setState( { data : res.data } ))
+        .then(res => this.setState( { data : res.data } ))
     }
 
     render() {

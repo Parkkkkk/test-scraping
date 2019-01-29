@@ -4,7 +4,7 @@ import './header.css'
 import { Logout_user } from './function'
 
 class Header extends Component {
-    logOut(e) {
+    logOut = (e) => {
         e.preventDefault()
         localStorage.removeItem('email')
         localStorage.removeItem('nick')
@@ -25,7 +25,7 @@ class Header extends Component {
             <div className="header">
                 <NavLink exact to ="/" className="item" activeClassName="active">Home</NavLink>
                 <NavLink to ="/profile" className="item" activeClassName="active">My</NavLink>
-                <NavLink to ="/?" className="item" activeClassName="active" onClick={this.logOut.bind(this)}>Logout</NavLink>
+                <NavLink to ="/?" className="item" activeClassName="active" onClick={this.logOut}>Logout</NavLink>
             </div>
         )
 

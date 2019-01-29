@@ -3,26 +3,22 @@ import { register } from './function';
 import './form.css';
 
 class Join extends Component {
-    constructor() {
-        super();
-        this.state = {
+        state = {
             email : '',
             password : '',
             nick : ''
         }
-        this.Change = this.Change.bind(this);
-        this.Onsubmit_join = this.Onsubmit_join.bind(this);
-    }
+       
 
 
-    Change (e) {
+    Change = (e) => {
         this.setState({[e.target.name] : e.target.value})
     }
    
-    Onsubmit_join (event) {
+    Onsubmit_join = (event) => {
         event.preventDefault()
 
-        var join_info = {
+         let join_info = {
             email : this.state.email,
             password : this.state.password,
             nick : this.state.nick
